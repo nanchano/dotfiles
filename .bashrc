@@ -1,6 +1,14 @@
 #
 # ~/.bashrc
 #
+
+# faster key response
+xset r rate 240 40
+
+# better ls
+alias ls='exa -al --color=always --group-directories-first'
+
+# pyenv vars - create pipenv from pyenv version
 export PYENV_ROOT="$HOME/.pyenv"
 export PIPENV_PYTHON="$PYENV_ROOT/shims/python"
 export PATH="$HOME/.pyenv/bin:$PATH"
@@ -83,7 +91,6 @@ if ${use_color} ; then
 		PS1='\[\033[01;32m\][\u@\h\[\033[01;37m\] \W\[\033[01;32m\]]\$\[\033[00m\] '
 	fi
 
-	alias ls='exa -al --color=always --group-directories-first'
 	alias grep='grep --colour=auto'
 	alias egrep='egrep --colour=auto'
 	alias fgrep='fgrep --colour=auto'
@@ -147,8 +154,6 @@ ex ()
   fi
 }
 
-# faster key response
-xset r rate 240 40
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/home/nico/google-cloud-sdk/path.bash.inc' ]; then . '/home/nico/google-cloud-sdk/path.bash.inc'; fi
