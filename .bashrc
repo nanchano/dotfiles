@@ -10,10 +10,10 @@ alias ls='exa -al --color=always --group-directories-first'
 
 # pyenv vars - create pipenv from pyenv version
 export PYENV_ROOT="$HOME/.pyenv"
-export PIPENV_PYTHON="$PYENV_ROOT/shims/python"
-export PATH="$HOME/.pyenv/bin:$PATH"
+# export PIPENV_PYTHON="$PYENV_ROOT/shims/python"
+export PATH="$HOME/.pyenv/shims:$PATH" # should always be .pyenv/shims, not .pyenv/bin
 eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+# eval "$(pyenv virtualenv-init -)"
 
 [[ $- != *i* ]] && return
 
@@ -160,3 +160,6 @@ if [ -f '/home/nico/google-cloud-sdk/path.bash.inc' ]; then . '/home/nico/google
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/nico/google-cloud-sdk/completion.bash.inc' ]; then . '/home/nico/google-cloud-sdk/completion.bash.inc'; fi
+
+# poetry
+export PATH="$HOME/.poetry/bin:$PATH"
