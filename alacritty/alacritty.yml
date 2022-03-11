@@ -151,4 +151,3 @@ key_bindings:
   # - { key: Subtract, mods: Control, action: DecreaseFontSize }
   - { key: Minus, mods: Control, action: DecreaseFontSize }
   - { key: N, mods: Control, action: SpawnNewInstance }
-theme: Substrata
