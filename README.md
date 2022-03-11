@@ -13,3 +13,4 @@ For spectrwm:
 1. Don't install from pacman - It's outdated, missing some config options on windows and screen.
 2. Install from AUR - spectrwm-git.
 3. Install JetBrains Mono Nerd Font for the arrows on the bar.
+4. Install scrot and xclip for screenshots.

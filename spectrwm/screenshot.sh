@@ -1,0 +1,1 @@
+/home/nico/.config/spectrwm/screenshot.sh
