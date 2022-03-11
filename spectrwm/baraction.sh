@@ -1,0 +1,1 @@
+/home/nico/.config/spectrwm/baraction.sh
