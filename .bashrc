@@ -2,10 +2,10 @@
 # ~/.bashrc
 #
 export PYENV_ROOT="$HOME/.pyenv"
-export PIPENV_PYTHON="$PYENV_ROOT/shims/python"
-export PATH="$HOME/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+export PATH="$PYENV_ROOT/bin:$PATH"
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
 
 [[ $- != *i* ]] && return
 
@@ -155,3 +155,5 @@ if [ -f '/home/nico/google-cloud-sdk/path.bash.inc' ]; then . '/home/nico/google
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/nico/google-cloud-sdk/completion.bash.inc' ]; then . '/home/nico/google-cloud-sdk/completion.bash.inc'; fi
+
+alias lvim=/home/nico/.local/bin/lvim
