@@ -15,9 +15,9 @@ lvim.colorscheme = "substrata"
 -- to disable icons and use a minimalist setup, uncomment the following
 -- lvim.use_icons = false
 
-vim.opt.foldmethod="syntax"
-vim.opt.foldnestmax=1
-vim.opt.foldlevelstart=20 -- allows files to be opened without being folded
+vim.opt.foldmethod = "syntax"
+vim.opt.foldnestmax = 1
+vim.opt.foldlevelstart = 20 -- allows files to be opened without being folded
 vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
 
@@ -75,14 +75,14 @@ lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
 
 -- if you don't want all the parsers change this to a table of the ones you want
-lvim.builtin.treesitter.ensure_installed = {
-  "bash",
-  "json",
-  "go",
-  "lua",
-  "python",
-  "yaml",
-}
+-- lvim.builtin.treesitter.ensure_installed = {
+--     "bash",
+--     "json",
+--     "go",
+--     "lua",
+--     "python",
+--     "yaml",
+-- }
 
 lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enable = true
@@ -106,12 +106,27 @@ lvim.builtin.treesitter.highlight.enable = true
 -- ---@usage disable automatic installation of servers
 -- lvim.lsp.installer.setup.automatic_installation = false
 
---configure a server manually. !!Requires `:LvimCacheReset` to take effect!!
---see the full default list `:lua print(vim.inspect(lvim.lsp.automatic_configuration.skipped_servers))`
--- vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "pyright" })
--- local opts = {} -- check the lspconfig documentation for a list of all possible options
+-- -- configure a server manually. !!Requires `:LvimCacheReset` to take effect!!
+-- -- see the full default list `:lua print(vim.inspect(lvim.lsp.automatic_configuration.skipped_servers))`
+vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "pyright" })
+local opts = {
+    filetypes = { "python" },
+    cmd = { "pyright-langserver", "--stdio" },
+    settings = {
+        pyright = {
+            disableOrganizeImports = false,
+            disableLanguageServices = false,
+        },
+        python = {
+            analysis = {
+                strictParameterNoneValue = false,
+                typeCheckingMode = "off",
+            }
+        },
+    }
+}
+require("lvim.lsp.manager").setup("pyright", opts)
 -- require("lvim.lsp.manager").setup("pylsp", opts)
--- require("lvim.lsp.manager").setup("pyright", opts)
 
 -- ---remove a server from the skipped list, e.g. eslint, or emmet_ls. !!Requires `:LvimCacheReset` to take effect!!
 -- ---`:LvimInfo` lists which server(s) are skipped for the current filetype
@@ -132,36 +147,41 @@ lvim.builtin.treesitter.highlight.enable = true
 -- set a formatter, this will override the language server formatting capabilities (if it exists)
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
-  { command = "black", filetypes = { "python" } },
-  { command = "isort", filetypes = { "python" } },
-  { command = "gofmt", filetypes = { "go" } },
---   {
---     -- each formatter accepts a list of options identical to https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md#Configuration
---     command = "prettier",
---     ---@usage arguments to pass to the formatter
---     -- these cannot contain whitespaces, options such as `--line-width 80` become either `{'--line-width', '80'}` or `{'--line-width=80'}`
---     extra_args = { "--print-with", "100" },
---     ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
---     filetypes = { "typescript", "typescriptreact" },
---   },
+    { command = "black", filetypes = { "python" } },
+    { command = "isort", filetypes = { "python" } },
+    { command = "gofmt", filetypes = { "go" } },
+    --   {
+    --     -- each formatter accepts a list of options identical to https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md#Configuration
+    --     command = "prettier",
+    --     ---@usage arguments to pass to the formatter
+    --     -- these cannot contain whitespaces, options such as `--line-width 80` become either `{'--line-width', '80'}` or `{'--line-width=80'}`
+    --     extra_args = { "--print-with", "100" },
+    --     ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
+    --     filetypes = { "typescript", "typescriptreact" },
+    --   },
 }
 
 -- set additional linters
 local linters = require "lvim.lsp.null-ls.linters"
 linters.setup {
     {
-            command = "flake8",
-            filetypes = { "python" } ,
-            extra_args = { "--max-line-length", "88" , "--ignore", "E266,501", "--max-complexity", "18", "--select", "B,C,E,F,W,T4"}
+        command = "flake8",
+        filetypes = { "python" },
+        extra_args = {
+            "--max-line-length", "88",
+            "--ignore", "E266,E501",
+            "--max-complexity", "18",
+            "--select", "B,C,E,F,W,T4",
+        }
     },
-    { command = "mypy", filetypes = { "python" } }
+    { command = "mypy", filetypes = { "python" }, extra_args = { "--ignore-missing-imports" } }
 }
 
 -- Additional Plugins
 lvim.plugins = {
-     { "folke/trouble.nvim" },
-     { "kvrohit/substrata.nvim" },
-     { "tmhedberg/SimpylFold" },
+    { "folke/trouble.nvim" },
+    { "kvrohit/substrata.nvim" },
+    { "tmhedberg/SimpylFold" },
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
