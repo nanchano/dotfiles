@@ -156,4 +156,4 @@ if [ -f '/home/nico/google-cloud-sdk/path.bash.inc' ]; then . '/home/nico/google
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/nico/google-cloud-sdk/completion.bash.inc' ]; then . '/home/nico/google-cloud-sdk/completion.bash.inc'; fi
 
-alias lvim=/home/nico/.local/bin/lvim
+alias vi=/home/nico/.local/bin/lvim
