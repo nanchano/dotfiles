@@ -11,9 +11,11 @@ an executable
 -- general
 lvim.log.level = "warn"
 lvim.format_on_save.enabled = true
-lvim.colorscheme = "substrata"
+lvim.colorscheme = "rose-pine"
 -- to disable icons and use a minimalist setup, uncomment the following
 -- lvim.use_icons = false
+
+-- set colorscheme after options
 
 vim.opt.foldmethod = "syntax"
 vim.opt.foldnestmax = 1
@@ -180,7 +182,9 @@ linters.setup {
 -- Additional Plugins
 lvim.plugins = {
     { "folke/trouble.nvim" },
-    { "kvrohit/substrata.nvim" },
+    { "arzg/vim-substrata" },
+    { "kdheepak/monochrome.nvim" },
+    { "rose-pine/neovim" },
     { "tmhedberg/SimpylFold" },
 }
 
