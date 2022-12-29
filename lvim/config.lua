@@ -77,14 +77,14 @@ lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
 
 -- if you don't want all the parsers change this to a table of the ones you want
--- lvim.builtin.treesitter.ensure_installed = {
---     "bash",
---     "json",
---     "go",
---     "lua",
---     "python",
---     "yaml",
--- }
+lvim.builtin.treesitter.ensure_installed = {
+    "bash",
+    "json",
+    "lua",
+    "python",
+    -- "terraform",
+    "yaml",
+}
 
 lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enable = true
@@ -171,7 +171,7 @@ linters.setup {
         filetypes = { "python" },
         extra_args = {
             "--max-line-length", "88",
-            "--ignore", "E266,E501",
+            "--ignore", "E266,E501,W503",
             "--max-complexity", "18",
             "--select", "B,C,E,F,W,T4",
         }
@@ -186,6 +186,7 @@ lvim.plugins = {
     { "kdheepak/monochrome.nvim" },
     { "rose-pine/neovim" },
     { "tmhedberg/SimpylFold" },
+    { "fatih/vim-go" },
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
