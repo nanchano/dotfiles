@@ -77,14 +77,15 @@ lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
 
 -- if you don't want all the parsers change this to a table of the ones you want
--- lvim.builtin.treesitter.ensure_installed = {
---     "bash",
---     "json",
---     "go",
---     "lua",
---     "python",
---     "yaml",
--- }
+lvim.builtin.treesitter.ensure_installed = {
+    "bash",
+    "json",
+    "go",
+    "lua",
+    "python",
+    "rust",
+    "yaml",
+}
 
 lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enable = true
@@ -92,10 +93,11 @@ lvim.builtin.treesitter.highlight.enable = true
 -- generic LSP settings
 
 -- -- make sure server will always be installed even if the server is in skipped_servers list
--- lvim.lsp.installer.setup.ensure_installed = {
+lvim.lsp.installer.setup.ensure_installed = {
+    "rust_analyzer",
 --     "sumneko_lua",
 --     "jsonls",
--- }
+}
 -- -- change UI setting of `LspInstallInfo`
 -- -- see <https://github.com/williamboman/nvim-lsp-installer#default-configuration>
 -- lvim.lsp.installer.setup.ui.check_outdated_servers_on_open = false
@@ -176,7 +178,7 @@ linters.setup {
             "--select", "B,C,E,F,W,T4",
         }
     },
-    { command = "mypy", filetypes = { "python" }, extra_args = { "--ignore-missing-imports" } }
+    { command = "mypy", filetypes = { "python" }, extra_args = { "--ignore-missing-imports" } },
 }
 
 -- Additional Plugins
