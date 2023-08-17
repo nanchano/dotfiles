@@ -1,6 +1,9 @@
 #
 # ~/.bashrc
 #
+
+alias vi=nvim
+
 export PATH="$HOME/.cargo/bin:$PATH"
 
 export PYENV_ROOT="$HOME/.pyenv"
@@ -157,5 +160,3 @@ if [ -f '/home/nico/google-cloud-sdk/path.bash.inc' ]; then . '/home/nico/google
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/nico/google-cloud-sdk/completion.bash.inc' ]; then . '/home/nico/google-cloud-sdk/completion.bash.inc'; fi
-
-alias vi=/home/nico/.local/bin/lvim
