@@ -39,4 +39,5 @@ export PATH="/usr/local/opt/mysql-client/bin:$PATH"
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
 alias tf="terraform"
+alias tg="terragrunt"
 alias k="kubectl"
