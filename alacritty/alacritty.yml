@@ -3,29 +3,45 @@ env:
 
 colors:
   primary:
-    background: '0x16171E'
-    foreground: '0xD1D2D3'
+    background: "0x191724"
+    foreground: "0xe0def4"
   cursor:
-    text: '0xFEFFFF'
-    cursor: '0xc7c7c7'
+    text: "0xe0def4"
+    cursor: "0x524f67"
+  vi_mode_cursor:
+    text: "0xe0def4"
+    cursor: "0x524f67"
+  line_indicator:
+    foreground: None
+    background: None
+  selection:
+    text: "0xe0def4"
+    background: "0x403d52"
   normal:
-    black: '0x000000'
-    red: '0xE68E8E'
-    green: '0x83AC8E'
-    yellow: '0xF5B78A'
-    blue: '0x9BB8DC'
-    magenta: '0xBAACE2'
-    cyan: '0x00C5C7'
-    white: '0xC7C7C7'
+    black: "0x26233a"
+    red: "0xeb6f92"
+    green: "0x31748f"
+    yellow: "0xf6c177"
+    blue: "0x9ccfd8"
+    magenta: "0xc4a7e7"
+    cyan: "0xebbcba"
+    white: "0xe0def4"
   bright:
-    black: '0x676767'
-    red: '0xFF6D67'
-    green: '0x5FF967'
-    yellow: '0xFEFB67'
-    blue: '0x6871FF'
-    magenta: '0xFF76FF'
-    cyan: '0x5FFDFF'
-    white: '0xFEFFFF'
+    black: "0x6e6a86"
+    red: "0xeb6f92"
+    green: "0x31748f"
+    yellow: "0xf6c177"
+    blue: "0x9ccfd8"
+    magenta: "0xc4a7e7"
+    cyan: "0xebbcba"
+    white: "0xe0def4"
+  hints:
+    start:
+      foreground: "#908caa"
+      background: "#1f1d2e"
+    end:
+      foreground: "#6e6a86"
+      background: "#1f1d2e"
 
 font:
   normal:
@@ -77,4 +93,3 @@ key_bindings:
   # - { key: Subtract, mods: Control, action: DecreaseFontSize }
   - { key: Minus, mods: Control, action: DecreaseFontSize }
   - { key: N, mods: Control, action: SpawnNewInstance }
-theme: Substrata
