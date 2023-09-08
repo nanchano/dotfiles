@@ -36,6 +36,8 @@ export DOCKER_GCS_WRITER_KEY_PATH=~/credentials/service_accounts/docker_gcs_writ
 . "$HOME/.cargo/env"
 export PATH="/usr/local/opt/mysql-client/bin:$PATH"
 
+export CLOUDSDK_PYTHON=/Users/nicolasanchano/.pyenv/shims/python
+
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
 alias tf="terraform"
