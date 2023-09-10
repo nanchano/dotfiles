@@ -1,1 +1,22 @@
-/Users/nicolasanchano/.config/alacritty/themes/blue-moon.yml
+colors:
+  primary:
+    background: "#1b1e2b"
+    foreground: "#676e96"
+  normal:
+    black: "#353b52"
+    red: "#ed8796"
+    green: "#b4c4b4"
+    yellow: "#e9bf57"
+    blue: "#959dcb"
+    magenta: "#b4b4b4"
+    cyan: "#89bbdd"
+    white: "#ffffff"
+  bright:
+    black: "#8796b0"
+    red: "#ed8796"
+    green: "#bcd9c4"
+    yellow: "#f0bf7a"
+    blue: "#b8bcf3"
+    magenta: "#c2b0b0"
+    cyan: "#89ddff"
+    white: "#ffffff"
