@@ -2,8 +2,9 @@ env:
   TERM: xterm-256color
 
 import:
-  - ~/.config/alacritty/themes/blue-moon.yml
+  # - ~/.config/alacritty/themes/blue-moon.yml
   # - ~/.config/alacritty/themes/catpuccin.yml
+  - ~/.config/alacritty/themes/habamax.yml
 
 font:
   normal:
