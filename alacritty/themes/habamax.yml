@@ -1,0 +1,28 @@
+colors:
+  primary:
+    background: "#1c1c1c"
+    foreground: "#585858"
+  cursor:
+    text: "#24273a"
+    cursor: "#a7a7a7"
+  vi_mode_cursor:
+    text: "#24273a"
+    cursor: "#a7a7a7"
+  normal:
+    black: "#767676"
+    red: "#d75f5f"
+    green: "#87af87"
+    yellow: "#afaf87"
+    blue: "#87afd7"
+    magenta: "#af87af"
+    cyan: "#5f8787"
+    white: "#dadada"
+  bright:
+    black: "#1c1c1c"
+    red: "#d7875f"
+    green: "#afd7af"
+    yellow: "#d7d787"
+    blue: "#5f87af"
+    magenta: "#d7afd7"
+    cyan: "#87afaf"
+    white: "#bcbcbc"
