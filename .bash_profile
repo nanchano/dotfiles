@@ -1,8 +1,14 @@
-# PYTHON
+if [ -f $HOME/.bashrc ]; then
+        source $HOME/.bashrc
+fi
 
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
+# PYTHON
 export PYENV_ROOT="$HOME/.pyenv"
 export PIPENV_PYTHON="$PYENV_ROOT/shims/python"
 export PATH="$PYENV_ROOT/shims:$PATH"
+export CLOUDSDK_PYTHON=/Users/nicolasanchano/.pyenv/shims/python
 eval "$(pyenv init -)"
 
 ## poetry
@@ -17,29 +23,26 @@ export LC_CTYPE="en_US.UTF-8"
 export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$PATH
 
-if [ -f $HOME/.bashrc ]; then
-        source $HOME/.bashrc
-fi
-
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/nicolasanchano/google-cloud-sdk/path.bash.inc' ]; then . '/Users/nicolasanchano/google-cloud-sdk/path.bash.inc'; fi
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/nicolasanchano/google-cloud-sdk/completion.bash.inc' ]; then . '/Users/nicolasanchano/google-cloud-sdk/completion.bash.inc'; fi
 
-# BI AIRFLOW BUCKET to make development easier
-export AIRFLOW_BUCKET="us-central1-bi-airflow-ef25f924-bucket"
-
-# GOOGLE_APPLICATION_CREDENTIALS path to JSON file for docker authentication on GCP servs
-export GCP_KEY_PATH=~/.config/gcloud/application_default_credentials.json
-export DOCKER_GCS_WRITER_KEY_PATH=~/credentials/service_accounts/docker_gcs_writer_service_account.json
+# RUST
 . "$HOME/.cargo/env"
+
+# MYSQL
 export PATH="/usr/local/opt/mysql-client/bin:$PATH"
 
-export CLOUDSDK_PYTHON=/Users/nicolasanchano/.pyenv/shims/python
+# Git branch on prompt
+source ~/.git-prompt.sh
+export PS1='[\u | \W$(__git_ps1 " (%s)")]\$ '
 
-export BASH_SILENCE_DEPRECATION_WARNING=1
-
+# Aliases
 alias tf="terraform"
 alias tg="terragrunt"
 alias k="kubectl"
+alias vi="nvim --"
+alias ls="eza -al --color=always --group-directories-first"
+eval "$(/opt/homebrew/bin/brew shellenv)"
