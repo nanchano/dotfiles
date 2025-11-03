@@ -10,10 +10,6 @@ NC='\033[0m'
 
 DOTFILES_DIR="$(cd "$(dirname "$0")" && pwd)"
 
-echo "${BLUE}==================================${NC}"
-echo "${BLUE}  Dotfiles Setup Script${NC}"
-echo "${BLUE}==================================${NC}\n"
-
 command_exists() {
     command -v "$1" >/dev/null 2>&1
 }
@@ -34,12 +30,85 @@ print_error() {
     echo "${RED}✗${NC} $1"
 }
 
+# Detect OS
+detect_os() {
+    case "$(uname -s)" in
+        Darwin*)
+            echo "macos"
+            ;;
+        Linux*)
+            if [ -f /etc/arch-release ]; then
+                echo "arch"
+            else
+                echo "linux"
+            fi
+            ;;
+        *)
+            echo "unknown"
+            ;;
+    esac
+}
+
+OS="$(detect_os)"
+
+# Get appropriate package manager
+get_package_manager() {
+    case "$OS" in
+        macos)
+            echo "brew"
+            ;;
+        arch)
+            if command -v paru >/dev/null 2>&1; then
+                echo "paru"
+            else
+                echo "pacman"
+            fi
+            ;;
+        *)
+            echo "unknown"
+            ;;
+    esac
+}
+
+PKG_MANAGER="$(get_package_manager)"
+
+# Generate install command for a package
+install_command() {
+    local package="$1"
+    local package_alt="$2"  # Alternative package name for Linux
+
+    case "$PKG_MANAGER" in
+        brew)
+            echo "brew install $package"
+            ;;
+        paru)
+            echo "paru -S ${package_alt:-$package}"
+            ;;
+        pacman)
+            echo "sudo pacman -S ${package_alt:-$package}"
+            ;;
+        *)
+            echo "install $package"
+            ;;
+    esac
+}
+
+echo "${BLUE}==================================${NC}"
+echo "${BLUE}  Dotfiles Setup Script${NC}"
+echo "${BLUE}==================================${NC}\n"
+
+print_info "Detected OS: $OS"
+print_info "Package manager: $PKG_MANAGER"
+echo ""
+
 echo "${BLUE}Checking prerequisites...${NC}\n"
 
-if command_exists brew; then
-    print_success "Homebrew found"
-else
-    print_warning "Homebrew not found. Install from: https://brew.sh"
+if [ "$OS" = "macos" ]; then
+    if command_exists brew; then
+        print_success "Homebrew found"
+    else
+        print_warning "Homebrew not found. Install from: https://brew.sh"
+    fi
 fi
 
 if command_exists zsh; then
@@ -52,19 +121,19 @@ fi
 if command_exists tmux; then
     print_success "Tmux found"
 else
-    print_warning "Tmux not found. Install with: brew install tmux"
+    print_warning "Tmux not found. Install with: $(install_command tmux)"
 fi
 
 if command_exists pyenv; then
     print_success "pyenv found"
 else
-    print_warning "pyenv not found. Install with: brew install pyenv"
+    print_warning "pyenv not found. Install with: $(install_command pyenv)"
 fi
 
 if command_exists go; then
     print_success "Go found"
 else
-    print_warning "Go not found. Install with: brew install go"
+    print_warning "Go not found. Install with: $(install_command go golang)"
 fi
 
 if [ -f "$HOME/.cargo/env" ]; then
@@ -76,33 +145,36 @@ fi
 if command_exists eza; then
     print_success "eza found"
 else
-    print_warning "eza not found. Install with: brew install eza"
+    print_warning "eza not found. Install with: $(install_command eza)"
 fi
 
 if command_exists nvim; then
     print_success "nvim found"
 else
-    print_warning "nvim not found. Install with: brew install neovim"
+    print_warning "nvim not found. Install with: $(install_command neovim)"
 fi
 
 if command_exists kubectl; then
     print_success "kubectl found"
 else
-    print_warning "kubectl not found. Install with: brew install kubectl"
+    print_warning "kubectl not found. Install with: $(install_command kubectl)"
 fi
 
 if command_exists terraform; then
     print_success "terraform found"
 else
-    print_warning "terraform not found. Install with: brew install terraform"
+    print_warning "terraform not found. Install with: $(install_command terraform)"
 fi
 
 # Check for Hack Nerd Font
-if fc-list 2>/dev/null | grep -qi "Hack Nerd Font" || \
-   system_profiler SPFontsDataType 2>/dev/null | grep -qi "Hack Nerd Font"; then
+if fc-list 2>/dev/null | grep -qi "Hack Nerd Font"; then
     print_success "Hack Nerd Font found"
 else
-    print_warning "Hack Nerd Font not found. Install with: brew install --cask font-hack-nerd-font"
+    if [ "$PKG_MANAGER" = "brew" ]; then
+        print_warning "Hack Nerd Font not found. Install with: brew install --cask font-hack-nerd-font"
+    else
+        print_warning "Hack Nerd Font not found. Install with: $(install_command ttf-hack-nerd)"
+    fi
 fi
 
 echo ""

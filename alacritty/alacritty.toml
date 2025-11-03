@@ -3,7 +3,9 @@ live_config_reload = true
 import = ["~/.config/alacritty/themes/kanagawa-paper-ink.toml"]
 
 [terminal.shell]
-program = "/bin/zsh"
+# Shell program will be auto-detected or can be set via environment variable
+# macOS: /bin/zsh, Linux: /usr/bin/zsh (or detected from $SHELL)
+program = "/bin/zsh"  # Works on macOS; on Linux, Alacritty falls back to $SHELL or /usr/bin/zsh
 args = ["-l"]
 
 [env]
@@ -62,6 +64,7 @@ action = "SpawnNewInstance"
 key = "N"
 mods = "Control"
 
+# MacOS equivalents for word navigation (using Command instead of Alt)
 [[keyboard.bindings]]
 chars = "\u001BF"
 key = "Right"
@@ -71,6 +74,17 @@ mods = "Command"
 chars = "\u001BB"
 key = "Left"
 mods = "Command"
+
+# Linux equivalents for word navigation (using Alt instead of Command)
+[[keyboard.bindings]]
+chars = "\u001BF"
+key = "Right"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u001BB"
+key = "Left"
+mods = "Alt"
 
 [window]
 startup_mode = "Maximized"
