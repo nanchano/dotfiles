@@ -1,3 +1,5 @@
+alias ssn="sudo shutdown now -f"
+
 # General
 alias tf="terraform"
 alias tg="terragrunt"
@@ -44,4 +46,5 @@ alias kcfgns='kubectl config set-context --current --namespace'
 alias kcfgsc='kubectl config set-context'
 
 # Claude
-alias cl='claude --dangerously-skip-permissions --mcp-config ~/.claude/.mcp.json'
+alias cl='claude --dangerously-skip-permissions'
+alias cde='codex --dangerously-bypass-approvals-and-sandbox'

@@ -1,4 +1,5 @@
 export PATH="$HOME/.local/bin:$PATH"
+export EDITOR="nvim"
 
 export LANG="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
@@ -16,7 +17,7 @@ export PATH="$GOPATH/bin:$PATH"
 export PATH="$PATH:$(go env GOPATH)/bin"
 
 # Rust
-. "$HOME/.cargo/env"
+#. "$HOME/.cargo/env"
 
 # Zsh Git Prompt (using vcs_info)
 autoload -Uz vcs_info
