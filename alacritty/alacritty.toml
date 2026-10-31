@@ -1,0 +1,103 @@
+[general]
+live_config_reload = true
+import = ["~/.config/alacritty/themes/vague.toml"]
+
+[terminal.shell]
+# Shell program will be auto-detected or can be set via environment variable
+# macOS: /bin/zsh, Linux: /usr/bin/zsh (or detected from $SHELL)
+program = "/bin/zsh"  # Works on macOS; on Linux, Alacritty falls back to $SHELL or /usr/bin/zsh
+args = ["-l"]
+
+[env]
+TERM = "xterm-256color"
+
+[font]
+size = 15.0
+
+[font.bold]
+family = "Hack Nerd Font"
+style = "Bold"
+
+[font.glyph_offset]
+x = 0
+y = 0
+
+[font.italic]
+family = "Hack Nerd Font"
+style = "Italic"
+
+[font.normal]
+family = "Hack Nerd Font"
+style = "Regular"
+
+[font.offset]
+x = 0
+y = 0
+
+[[keyboard.bindings]]
+action = "Paste"
+key = "V"
+mods = "Control|Shift"
+
+[[keyboard.bindings]]
+action = "Copy"
+key = "C"
+mods = "Control|Shift"
+
+[[keyboard.bindings]]
+action = "ResetFontSize"
+key = "Key0"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "IncreaseFontSize"
+key = "Equals"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "DecreaseFontSize"
+key = "Minus"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "SpawnNewInstance"
+key = "N"
+mods = "Control"
+
+# MacOS equivalents for word navigation (using Command instead of Alt)
+[[keyboard.bindings]]
+chars = "\u001BF"
+key = "Right"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001BB"
+key = "Left"
+mods = "Command"
+
+# Linux equivalents for word navigation (using Alt instead of Command)
+[[keyboard.bindings]]
+chars = "\u001BF"
+key = "Right"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u001BB"
+key = "Left"
+mods = "Alt"
+
+[window]
+startup_mode = "Maximized"
+
+[selection]
+save_to_clipboard = true
+semantic_escape_chars = ",│`|:\"' ()[]{}<>"
+
+[window.padding]
+x = 2
+y = 2
+
+[[keyboard.bindings]]
+key = "Return"
+mods = "Shift"
+chars = "\u001B\r"
