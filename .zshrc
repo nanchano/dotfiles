@@ -16,6 +16,9 @@ setopt APPEND_HISTORY
 setopt INC_APPEND_HISTORY
 setopt HIST_IGNORE_ALL_DUPS
 
+# mise (runtime version manager)
+eval "$(mise activate zsh --quiet)"
+
 # Python
 export PYENV_ROOT="$HOME/.pyenv"
 if command -v pyenv 1>/dev/null 2>&1; then
