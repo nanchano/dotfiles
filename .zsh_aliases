@@ -3,11 +3,13 @@ alias ssn="sudo shutdown now -f"
 # General
 alias tf="terraform"
 alias tg="terragrunt"
-alias vi="nvim --"
+alias vi="~/.local/bin/nvim --"
 alias ls="eza -al --color=always --group-directories-first"
 alias hh="history | cut -c 8-"
+alias nvr="nvim +Git"
 
 # Kubectl - Basic
+alias s="sofka"
 alias k='kubectl'
 alias kl='kubectl logs'
 alias kexec='kubectl exec -it'
